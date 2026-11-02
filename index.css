@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base Reset ─── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #f8f9fc;
+  color: #1a1a2e;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #dde1ed;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #bac8ff;
+}
+
+/* ─── Custom Utilities ─── */
+@layer components {
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-sm border border-surface-200 rounded-2xl shadow-card;
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-200 hover:shadow-card-hover hover:border-primary-200;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-primary-600 text-white font-medium rounded-xl
+           transition-all duration-200 hover:bg-primary-700 active:scale-[0.97] focus:outline-none focus:ring-2 focus:ring-primary-300;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-surface-100 text-gray-700 font-medium rounded-xl border border-surface-200
+           transition-all duration-200 hover:bg-surface-200 active:scale-[0.97] focus:outline-none focus:ring-2 focus:ring-primary-200;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-3 py-2 text-gray-500 font-medium rounded-xl
+           transition-all duration-200 hover:bg-surface-100 hover:text-gray-700 active:scale-[0.97];
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2.5 bg-surface-50 border border-surface-200 rounded-xl text-sm
+           transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-200 focus:border-primary-400
+           placeholder:text-gray-400;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-lg text-xs font-medium;
+  }
+
+  .page-enter {
+    animation: pageEnter 0.35s ease-out;
+  }
+}
+
+@keyframes pageEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
